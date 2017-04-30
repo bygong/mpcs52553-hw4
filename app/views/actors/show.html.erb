@@ -1,0 +1,50 @@
+<% act = Actor.find_by(id: params["id"]) %>
+
+<% production = act.roles %>
+
+<h1> Production of: <%= act.name %> </h1>
+
+<% production.each do |role| %>
+<% movie = role.movie %>
+
+
+<div class="row">
+  <div class="col-sm-3">
+      <%= image_tag movie.poster_url, size: '210x310', class: 'poster img-responsive' %>
+  </div>
+  <div class="col-sm-8 well">
+    <div class="page-title">
+      <h1>
+          <%= movie.title %>
+          <small>(<%= movie.year %>)</small>
+          <small class="pull-right mpaa"><%= movie.mpaa %></small>
+      </h1>
+
+      <p class="lead">
+        <%= movie.plot %>
+      </p>
+
+      <p><strong>Running Time:</strong> <%= movie.runtime %> minutes.</p>
+      <p><strong>Director:</strong>
+        <span class="hardcoded">
+          <%= movie.director.name %>
+        </span>
+      </p>
+
+      <p><strong>Cast:</strong></p>
+
+      <ul class="hardcoded">
+      <% movie.players.each do |player|%>
+        <li><%= player.name %></li>
+        <% end %>
+        <!-- <li>Kevin Bacon as Jack Swigert</li>
+        <li>Bill Paxton as Fred Haise</li> -->
+      </ul>
+
+      <p><%= link_to "See this movie's complete entry on IMDB.", "http://www.imdb.com/title/#{movie.imdb_key}" %></p>
+
+    </div>
+  </div>
+</div>
+
+<% end %>

@@ -1,0 +1,25 @@
+<div class="row">
+
+  <% movies = Movie.all.order('runtime asc') %>
+
+  <% movies.each do |movie| %>
+
+    <!-- Draw the movie poster with the title underneath -->
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <a href="/movies/<%= movie.imdb_key %>">
+          <%= image_tag movie.poster_url, class: 'poster img-responsive' %>
+        </a>
+
+        <div class="caption text-center">
+          <h3>
+            <a href="/movies/<%= movie.imdb_key %>">
+              <%= movie.title %>
+            </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
