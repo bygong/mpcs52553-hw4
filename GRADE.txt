@@ -1,0 +1,9 @@
+HW 4 Grade - bygong
+
+Score: (4.5/5)
+
+Great job.
+
+- `show` pages will break if no movie/actor/director exists for the given `id`.
+- `Director` should have the corresponding `has_many :movies` association
+- Minor note, but Ruby methods do not need to be invoked with parentheses (e.g., line 1 of `actors/index.html.erb`)
